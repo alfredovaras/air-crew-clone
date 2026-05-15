@@ -7,6 +7,7 @@ import { ChevronUp } from "lucide-react"
 export function BackToTop() {
   const [isVisible, setIsVisible] = useState(false)
   const [scrollProgress, setScrollProgress] = useState(0)
+  const [mounted, setMounted] = useState(false)
 
   // Calcular o progresso da rolagem e a visibilidade do botão
   const handleScroll = () => {
@@ -35,9 +36,15 @@ export function BackToTop() {
   }
 
   useEffect(() => {
+    setMounted(true)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  // Don't render until mounted to avoid hydration mismatch
+  if (!mounted) {
+    return null
+  }
 
   return (
     <div

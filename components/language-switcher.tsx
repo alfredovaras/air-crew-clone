@@ -30,10 +30,12 @@ const languages: Language[] = [
 export function LanguageSwitcher() {
   const [isOpen, setIsOpen] = useState(false)
   const [currentLanguage, setCurrentLanguage] = useState<Language>(languages[0])
+  const [mounted, setMounted] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
-  // Carregar idioma salvo do localStorage ao iniciar
+  // Wait for mount before reading localStorage to avoid hydration mismatch
   useEffect(() => {
+    setMounted(true)
     const savedLanguageCode = localStorage.getItem("bannerLanguage")
     if (savedLanguageCode) {
       const savedLanguage = languages.find((lang) => lang.code === savedLanguageCode)
@@ -69,6 +71,22 @@ export function LanguageSwitcher() {
       document.removeEventListener("mousedown", handleClickOutside)
     }
   }, [])
+
+  // Prevent hydration mismatch by rendering placeholder until mounted
+  if (!mounted) {
+    return (
+      <div className="relative">
+        <button
+          className="flex items-center space-x-1 text-white hover:text-blue-500 focus:outline-none"
+          aria-expanded={false}
+          aria-haspopup="true"
+        >
+          <span className="text-sm sm:inline">{languages[0].name}</span>
+          <ChevronDown className="h-3 w-3" />
+        </button>
+      </div>
+    )
+  }
 
   return (
     <div className="relative" ref={dropdownRef}>

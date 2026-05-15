@@ -38,17 +38,19 @@ export function BannerCarousel() {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
   const totalSlides = bannerSlides.length
 
-  // Fallback function if context is not available
-  const getSlideContent = context
-    ? context.getSlideContent
-    : (slideIndex: number) => {
-        return (
-          defaultSlideContent[slideIndex as keyof typeof defaultSlideContent] || {
-            title: "Slide Title",
-            subtitle: "Slide Subtitle",
-          }
-        )
-      }
+  // Use default content until context is mounted to avoid hydration mismatch
+  const getSlideContent = (slideIndex: number) => {
+    // Always use default content on server and until client is mounted
+    if (!context?.mounted) {
+      return (
+        defaultSlideContent[slideIndex as keyof typeof defaultSlideContent] || {
+          title: "Slide Title",
+          subtitle: "Slide Subtitle",
+        }
+      )
+    }
+    return context.getSlideContent(slideIndex)
+  }
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1))

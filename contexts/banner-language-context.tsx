@@ -103,15 +103,18 @@ type BannerLanguageContextType = {
   currentLanguage: LanguageCode
   setLanguage: (language: LanguageCode) => void
   getSlideContent: (slideIndex: number) => { title: string; subtitle: string }
+  mounted: boolean
 }
 
 const BannerLanguageContext = createContext<BannerLanguageContextType | undefined>(undefined)
 
 export function BannerLanguageProvider({ children }: { children: React.ReactNode }) {
   const [currentLanguage, setCurrentLanguage] = useState<LanguageCode>("en")
+  const [mounted, setMounted] = useState(false)
 
-  // Carregar idioma salvo do localStorage ao iniciar
+  // Wait for mount before reading localStorage to avoid hydration mismatch
   useEffect(() => {
+    setMounted(true)
     const savedLanguage = localStorage.getItem("bannerLanguage") as LanguageCode
     if (savedLanguage && ["en", "de", "es", "pt"].includes(savedLanguage)) {
       setCurrentLanguage(savedLanguage)
@@ -148,7 +151,7 @@ export function BannerLanguageProvider({ children }: { children: React.ReactNode
   }
 
   return (
-    <BannerLanguageContext.Provider value={{ currentLanguage, setLanguage, getSlideContent }}>
+    <BannerLanguageContext.Provider value={{ currentLanguage, setLanguage, getSlideContent, mounted }}>
       {children}
     </BannerLanguageContext.Provider>
   )
