@@ -93,7 +93,7 @@ export default function CareersPage() {
                 {jobOpenings.map((job, index) => (
                   <article key={index} className="bg-white p-8 shadow-lg rounded-[16px]">
                     <div className="flex justify-between items-start">
-                      <h3 className="text-2xl font-bold text-navy-900 mb-2">{job.title}</h3
+                      <h3 className="text-2xl font-bold text-navy-900 mb-2">{job.title}</h3>
                     </div>
                     <div className="flex items-center text-gray-600 mb-2">
                       <MapPin className="h-4 w-4 mr-2 text-blue-500" />

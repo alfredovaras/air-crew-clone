@@ -10,7 +10,7 @@ export default function ContactPage() {
   const [emailError, setEmailError] = useState("")
 
   const blockedDomains = [
-    "123.com"
+    "123.com",
     "qq.com",
     "10minutemail.com",
     "aol.com",

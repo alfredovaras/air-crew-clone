@@ -1734,22 +1734,22 @@ export default function NewsPage() {
               position: relative;
               overflow: hidden;
             }
-            
+
             .news-image {
               transition: transform 500ms ease-in-out !important;
             }
-            
+
             .news-image-container:hover .news-image {
               transform: scale(1.1) !important;
             }
-            
+
             .news-overlay {
               position: absolute;
               inset: 0;
               background-color: rgba(0, 0, 0, 0.3);
               transition: background-color 500ms ease-in-out !important;
             }
-            
+
             .news-image-container:hover .news-overlay {
               background-color: rgba(0, 0, 0, 0.5) !important;
             }
@@ -1808,7 +1808,7 @@ export default function NewsPage() {
                           href={item.url}
                           target="_blank"
                           className={`inline-flex flex-row gap-2 content-center text-white px-4 py-2 rounded-[8px] font-medium ${getCategoryColor(
-                            activeTab !== "all" && item.categories.includes(activeTab) ? activeTab : item.categories[0]}`}
+                            activeTab !== "all" && item.categories.includes(activeTab) ? activeTab : item.categories[0])}`}
                         >
                           Read more
                           <ChevronRight />

@@ -363,11 +363,11 @@ export default function TrainingSimulationProductsPage() {
         .gallery-item-hover img {
           transition: transform 500ms ease-in-out !important;
         }
-        
+
         .gallery-item-hover:hover img {
           transform: scale(1.1) !important;
         }
-        
+
         .gallery-item-hover .overlay {
           position: absolute;
           inset: 0;
@@ -377,7 +377,7 @@ export default function TrainingSimulationProductsPage() {
           justify-content: center;
           transition: background-color 500ms ease-in-out !important;
         }
-        
+
         .gallery-item-hover:hover .overlay {
           background-color: rgba(0, 0, 0, 0.5) !important;
         }
@@ -499,7 +499,7 @@ export default function TrainingSimulationProductsPage() {
             <div className="mb-8">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
                 <h2 className="text-3xl font-bold text-gray-800 flex items-center">
-                  {selectedCategory.title
+                  {selectedCategory.title}
                 </h2>
                 <div className="h-1 w-16 bg-gradient-to-r from-blue-500 to-blue-600 mt-2 mb-6"></div>
                 <p className="text-gray-600 max-w-3xl mb-8">
