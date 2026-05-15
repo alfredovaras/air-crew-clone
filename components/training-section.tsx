@@ -45,31 +45,10 @@ export function TrainingSection() {
         </ScrollAnimation>
       </div>
 
-      <style jsx global>{`
-        .training-image {
-          transition: transform 500ms ease-in-out !important;
-        }
-        
-        .training-container:hover .training-image {
-          transform: scale(1.1) !important;
-        }
-        
-        .training-overlay {
-          position: absolute;
-          inset: 0;
-          background-color: rgba(0, 0, 0, 0.3);
-          transition: background-color 500ms ease-in-out !important;
-        }
-        
-        .training-container:hover .training-overlay {
-          background-color: rgba(0, 0, 0, 0.5) !important;
-        }
-      `}</style>
-
       <div className="grid grid-cols-1 md:grid-cols-3 gap-0 p-6">
         {trainingItems.map((item, index) => (
           <ScrollAnimation key={index} type="fadeIn" delay={0.2 + index * 0.2}>
-            <Link href={item.link} className="training-container group relative h-[507px] overflow-hidden block  m-3 rounded-[16px]">
+            <Link href={item.link} className="group relative h-[507px] overflow-hidden block m-3 rounded-[16px]">
               <div className="absolute inset-0 overflow-hidden">
                 <Image
                   src={
@@ -79,51 +58,24 @@ export function TrainingSection() {
                   }
                   alt={item.title}
                   fill
-                  className="object-cover training-image"
+                  className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
                 />
               </div>
-              <div className="training-overlay" />
+              <div className="absolute inset-0 bg-black/30 transition-colors duration-500 ease-in-out group-hover:bg-black/50" />
               <div className="absolute inset-0 flex flex-col items-start justify-end p-10 z-10">
-                <h3
-                  className="text-white text-3xl font-bold mb-2"
-                  style={{
-                    transition: "transform 500ms ease-in-out !important",
-                  }}
-                >
+                <h3 className="text-white text-3xl font-bold mb-2 transition-transform duration-500 ease-in-out group-hover:-translate-y-1">
                   {item.title}
                 </h3>
-                <style jsx global>{`
-                  .group:hover h3 {
-                    transform: translateY(-5px) !important;
-                  }
-                  .group:hover p {
-                    transform: translateY(-5px) !important;
-                  }
-                  .group:hover svg {
-                    transform: translateX(4px) !important;
-                  }
-                `}</style>
-                <p
-                  className="text-white mb-6"
-                  style={{
-                    transition: "transform 500ms ease-in-out !important",
-                  }}
-                >
+                <p className="text-white mb-6 transition-transform duration-500 ease-in-out group-hover:-translate-y-1">
                   {item.description}
                 </p>
                 <span
-                  className={`inline-flex items-center ${item.color} text-white px-6 py-3 font-medium rounded-[8px]`}
-                  style={{
-                    transition: "all 500ms ease-in-out !important",
-                  }}
+                  className={`inline-flex items-center ${item.color} text-white px-6 py-3 font-medium rounded-[8px] transition-all duration-500 ease-in-out`}
                 >
                   LEARN MORE
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 ml-2"
-                    style={{
-                      transition: "transform 500ms ease-in-out !important",
-                    }}
+                    className="h-5 w-5 ml-2 transition-transform duration-500 ease-in-out group-hover:translate-x-1"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
