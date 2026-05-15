@@ -52,7 +52,7 @@ export function Footer() {
             </ul>
           </div>
 
-          <hr className="hidden sm:block lg:hidden col-span-2 border-white/20"/>
+          <hr className="hidden sm:block lg:hidden col-span-2 border-white/20" />
 
           {/* Contact Info - Centered on mobile */}
           <div className="col-span-1 flex flex-col items-center sm:items-start text-center sm:text-left pb-8 sm:pb-0 border-b sm:border-0 border-white/20">
@@ -103,7 +103,7 @@ export function Footer() {
         <div className="border-t border-white/20 mt-12 pt-8">
           <div className="flex flex-col lg:flex-row justify-between items-center">
             <p className="text-white text-center md:text-left mb-4 md:mb-0">
-              &copy; {new Date().getFullYear()} AMST-Systemtechnik GmbH. All rights reserved.
+              &copy; 2026 AMST-Systemtechnik GmbH. All rights reserved.
             </p>
             <div className="flex flex-col gap-2 sm:flex-row sm:space-x-6 sm:gap-0">
               <Link href="/terms" className="text-white hover:text-blue-500 transition-colors">
